@@ -8,11 +8,8 @@ public class test
 {
     public static void main(String[] args) throws IOException
     {
-        int n = 1;
-        for(int i = 1; i < 11; i++)
-        {
-            n = n * i;
-        }
-        System.out.println(n);
+        int x = 5;
+        x = ++x + ++x;
+        System.out.println(x);
     }
 }
