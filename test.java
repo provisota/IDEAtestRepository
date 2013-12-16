@@ -8,8 +8,18 @@ public class test
 {
     public static void main(String[] args) throws IOException
     {
-        int x = 5;
-        x = ++x + ++x;
-        System.out.println(x);
+        newClass newClass1 = new newClass();
+        newClass1.x++;
+
+        newClass newClass2 = newClass1;
+        newClass2.x++;
+
+        System.out.println(newClass1.x);
+        System.out.println(newClass2.x);
+    }
+
+    private static class newClass
+    {
+        int x;
     }
 }
