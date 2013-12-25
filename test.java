@@ -10,11 +10,24 @@ public class Test
     static int y;
     public static void main(String[] args) throws IOException, CloneNotSupportedException
     {
-
-        x = 10;
+        Test test = new Test();
+        test.x = 10;
         y = 15;
         B b = new B();
         System.out.println(b.zero);
+    }
+
+    static void staticMethod()
+    {
+        Test test = new Test();
+        test.x = 10;
+        y = 15;
+    }
+
+    void nonStaticMethod()
+    {
+        x = 10;
+        y = 15;
     }
 
     private static class Zero
