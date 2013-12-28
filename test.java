@@ -3,63 +3,91 @@ package test;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.*;
 
 public class Test
 {
-    int x;
-    static int y;
+
     public static void main(String[] args) throws IOException, CloneNotSupportedException
     {
-        Test test = new Test();
-        test.x = 10;
-        y = 15;
-        B b = new B();
-        System.out.println(b.zero);
-    }
+        boolean equalsOrNot;
+        Date startDate;
+        Date endDate;
 
-    static void staticMethod()
-    {
-        Test test = new Test();
-        test.x = 10;
-        y = 15;
-    }
+        A testA = new A();
+        B testB = new B();
 
-    void nonStaticMethod()
-    {
-        x = 10;
-        y = 15;
-    }
+        List<A> aList = new ArrayList<>();
+        List<B> bList = new ArrayList<>();
 
-    private static class Zero
-    {
-        static int zero;
-        static
+        for (int i = 0; i < 1000000; i++)
         {
-            System.out.println(zero);
+            aList.add(new A());
         }
-        private Zero()
+        for (int i = 0; i < 1000000; i++)
         {
-            System.out.println("Class Zero Constructor");
-            zero = 5;
-            System.out.println(zero);
+            bList.add(new B());
+        }
+
+        startDate = new Date();
+        for (A a : aList)
+            equalsOrNot = a.equals(testA);
+        endDate = new Date();
+        System.out.println("time A (with instanceof) = " + (endDate.getTime() - startDate.getTime()));
+
+        startDate = new Date();
+        for (B b : bList)
+            equalsOrNot = b.equals(testB);
+        endDate = new Date();
+        System.out.println("time B (without instanceof) = " + (endDate.getTime() - startDate.getTime()));
+    }
+
+    private static class A
+    {
+        int x = 17;
+
+        @Override
+        public boolean equals(Object o)
+        {
+            if (this == o) return true;
+            if (!(o instanceof A)) return false;
+
+            A a = (A) o;
+
+            if (x != a.x) return false;
+
+            return true;
+        }
+
+        @Override
+        public int hashCode()
+        {
+            return x;
         }
     }
 
-    private static class A extends Zero
+    public static class B
     {
-        private A()
-        {
-            System.out.println("Class A Constructor");
-            System.out.println(zero);
-            zero = 10;
-        }
-    }
+        int x = 31;
 
-    public static class B extends A
-    {
-        private B()
+        @Override
+        public boolean equals(Object o)
         {
-            System.out.println("Class B Constructor");
+            if (o == null) return false;
+            if (this == o) return true;
+            if (o.getClass() != this.getClass()) return false;
+
+            B b = (B) o;
+
+            if (x != b.x) return false;
+
+            return true;
+        }
+
+        @Override
+        public int hashCode()
+        {
+            return x;
         }
     }
 }
