@@ -5,7 +5,6 @@ import java.io.IOException;
 
 public class Test
 {
-
     public static void main(String[] args) throws IOException
     {
         B b1 = new B("_test");
@@ -39,8 +38,9 @@ class B extends A
         this.name += name;
     }
 
-//        @Override
-//        public String toString() {
-//            return name;
-//        }
+//    @Override
+//    public String toString()
+//    {
+//        return name;
+//    }
 }
