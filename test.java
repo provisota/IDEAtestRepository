@@ -1,46 +1,24 @@
 package test;
 
+/**
+ * @author Alterovych Ilya
+ *         Date: 01.03.14
+ */
+public class Test {
+    private final int width;
+    private final String height;
 
-import java.io.IOException;
-
-public class Test
-{
-    public static void main(String[] args) throws IOException
-    {
-        B b1 = new B("_test");
-        System.out.println(b1);
-    }
-}
-
-class A
-{
-    String name = "A";
-
-    public A(String name)
-    {
-        this.name += name;
+    public Test(int width, String height) {
+        this.width = width;
+        this.height = height;
     }
 
-    @Override
-    public String toString()
-    {
-        return name;
-    }
-}
-
-class B extends A
-{
-    String name = "B";
-
-    public B(String name)
-    {
-        super(name);
-        this.name += name;
+    public Test() {
+        width = 0;
+        height = null;
     }
 
-//    @Override
-//    public String toString()
-//    {
-//        return name;
-//    }
+    public class InnerTest{
+        private int intValue;
+    }
 }
