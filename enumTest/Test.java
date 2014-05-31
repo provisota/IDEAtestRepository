@@ -1,11 +1,10 @@
-package test;
+package test.enumTest;
 
 import java.text.ParseException;
 import java.util.Arrays;
 
 /**
  * @author Alterovych Ilya
- *         Date: 01.03.14
  */
 public class Test {
 
@@ -23,6 +22,7 @@ public class Test {
             System.out.println(type.toString());
             System.out.println(type.getAttName());
             System.out.println(type.getSecondName() + " " + type.toString());
+            System.out.println();
         }
     }
 }
